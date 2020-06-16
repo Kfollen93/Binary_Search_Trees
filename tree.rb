@@ -28,7 +28,6 @@ class Tree
   Make sure to check for duplicates and omit if so.
 
 
-  
 =end
 
   end
