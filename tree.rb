@@ -12,7 +12,7 @@ class Tree
     if data_sorted.empty?
       return nil
     else
-      return constructTreeFromArray(data_sorted, 0, data_sorted.length - 1)
+      return constructTreeFromArray(data_sorted, 0, data_sorted.length-1)
     end
   end
 
