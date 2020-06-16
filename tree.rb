@@ -2,33 +2,22 @@ require_relative 'node.rb'
 
 class Tree
   attr_accessor :root, :data_array
-  def initialize(data_array)
+  def initialize
     @root = nil
     @data_array = data_array
   end
 
-  def build_tree
+  def build_tree(data_array)
     data_sorted = data_array.uniq.sort
-    if data_sorted.empty?
-      return nil
-    else
-      return constructTreeFromArray(data_sorted, 0, data_sorted.length-1)
-    end
+    return nil if data_sorted.empty?
+    return Node.new(data_sorted.first) if data_sorted.length < 2
+
+    mid = data_sorted.length / 2
+    root = Node.new(data_sorted[mid])
+    root.left = build_tree(data_sorted.take(mid))
+    root.right = build_tree(data_sorted.drop(mid + 1))
+    root.value
   end
-
-  def constructTreeFromArray(data_sorted, left, right)
-    if left > right
-      return nil
-    else
-      mid = left + (right - left) / 2
-      node = Node.new(data_sorted[mid]) # creates root / midpoint
-      node.left = constructTreeFromArray(data_sorted, left, mid - 1)
-      node.right = constructTreeFromArray(data_sorted, mid + 1, right)
-      return node.value # root node
-    end
-  end
-
-
 
   def insert(value)
 =begin
@@ -37,6 +26,9 @@ class Tree
   searching for the right place to insert our new node,
   in the same way as explained in the search function.
   Make sure to check for duplicates and omit if so.
+
+
+  
 =end
 
   end
@@ -65,9 +57,12 @@ class Tree
   Because the BST is structured (as per its definition), that the right child is always larger,
   than the parent and the left child is always lesser.
 =end
-end
+
+
 
 end
 
-binary = Tree.new([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
-p binary.build_tree
+end
+
+binary = Tree.new
+binary.build_tree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
