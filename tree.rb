@@ -58,30 +58,30 @@ class Tree
 =end
 
 node = @root
-if node.data == value
-  puts "Yes"
-  return true
-else
-while @root != nil do
-  if value < node.data
-    @root = node.left
-    if @root.data == value
+if value == node.data
+  return node
+elsif value < node.data
+  if node.left != nil
+    while value != @left && @left != nil do
+    @left = find(node.left.data)
+    if @left == value
       puts "Yes"
       break
     end
-  elsif value > node.data
-    @root = node.right
-    if @root.data == value
-      puts "Yes"
-      break
+  end
+  else
+    puts "Nope"
+    return nil
   end
 end
 end
-end
-end
+
+
+
 
 end
 
 binary = Tree.new([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
-binary.find() #Find is only finding 8, 4, and 67. Because of how they have child nodes.
-# So my code is off just a bit.
+p binary.find(4)
+
+
