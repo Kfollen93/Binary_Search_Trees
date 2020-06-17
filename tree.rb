@@ -2,8 +2,9 @@ require_relative 'node.rb'
 
 class Tree
   attr_accessor :root
+
   def initialize(data_array)
-    @root = build_tree(data_array)
+  @root = build_tree(data_array)
   end
 
   def build_tree(data_array)
@@ -56,11 +57,31 @@ class Tree
   than the parent and the left child is always lesser.
 =end
 
-
-
+node = @root
+if node.data == value
+  puts "Yes"
+  return true
+else
+while @root != nil do
+  if value < node.data
+    @root = node.left
+    if @root.data == value
+      puts "Yes"
+      break
+    end
+  elsif value > node.data
+    @root = node.right
+    if @root.data == value
+      puts "Yes"
+      break
+  end
+end
+end
+end
 end
 
 end
 
 binary = Tree.new([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
-#binary.build_tree
+binary.find() #Find is only finding 8, 4, and 67. Because of how they have child nodes.
+# So my code is off just a bit.
