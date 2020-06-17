@@ -13,10 +13,10 @@ class Tree
     return Node.new(data_sorted.first) if data_sorted.length < 2
 
     mid = data_sorted.length / 2
-    root = Node.new(data_sorted[mid])
-    root.left = build_tree(data_sorted.take(mid))
-    root.right = build_tree(data_sorted.drop(mid + 1))
-    root.value
+    node = Node.new(data_sorted[mid])
+    node.left = build_tree(data_sorted.take(mid))
+    node.right = build_tree(data_sorted.drop(mid + 1))
+    node.value
   end
 
   def insert(value)
@@ -64,4 +64,4 @@ end
 end
 
 binary = Tree.new
-binary.build_tree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
+p binary.build_tree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
