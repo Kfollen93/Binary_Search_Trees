@@ -1,10 +1,9 @@
 require_relative 'node.rb'
 
 class Tree
-  attr_accessor :root, :data_array
-  def initialize
-    @root = nil
-    @data_array = data_array
+  attr_accessor :root
+  def initialize(data_array)
+    @root = build_tree(data_array)
   end
 
   def build_tree(data_array)
@@ -16,7 +15,7 @@ class Tree
     node = Node.new(data_sorted[mid])
     node.left = build_tree(data_sorted.take(mid))
     node.right = build_tree(data_sorted.drop(mid + 1))
-    node.value
+    node
   end
 
   def insert(value)
@@ -63,5 +62,5 @@ end
 
 end
 
-binary = Tree.new
-p binary.build_tree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
+binary = Tree.new([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
+#binary.build_tree
