@@ -45,34 +45,14 @@ class Tree
 
   end
   
-  def find(value)
-=begin
-  You always start searching the tree at the root node and go down from there.
-  You compare the data in each node with the one you are looking for.
-  If the compared node doesn’t match then you either proceed to the right child or the left child,
-  which depends on the outcome of the following comparison:
-  If the node that you are searching for is lower than the one you were comparing it with,
-  you proceed to to the left child, otherwise (if it’s larger) you go to the right child. Why?
-  Because the BST is structured (as per its definition), that the right child is always larger,
-  than the parent and the left child is always lesser.
-=end
-
-node = @root
-if value == node.data
+  def find(value, node = @root)
+return nil if node.nil?
+if value < node.data
+  find(value, node.left)
+elsif value > node.data
+  find(value, node.right)
+else
   return node
-elsif value < node.data
-  if node.left != nil
-    while value != @left && @left != nil do
-    @left = find(node.left.data)
-    if @left == value
-      puts "Yes"
-      break
-    end
-  end
-  else
-    puts "Nope"
-    return nil
-  end
 end
 end
 
@@ -82,6 +62,6 @@ end
 end
 
 binary = Tree.new([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
-p binary.find(4)
+p binary.find(7)
 
 
