@@ -22,13 +22,14 @@ class Tree
   def insert(value, node = @root)
     if value == node.data
       return nil
+    elsif node.right.nil? && value > node.data
+      node.right = Node.new(value)
+    elsif node.left.nil? && value < node.data
+      node.left = Node.new(value)
     elsif value < node.data
       insert(value, node.left)
     elsif value > node.data
       insert(value, node.right)
-    elsif node.nil?
-      node = Node.new(value)
-      node
     end
   end
 
@@ -58,4 +59,4 @@ end
 
 binary = Tree.new([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
 # binary.find(7)
-binary.insert(2)
+binary.insert(12)
