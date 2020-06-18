@@ -19,15 +19,17 @@ class Tree
     node
   end
 
-  def insert(value)
-=begin
-  It is very similar to the search function.
-  You again start at the root of the tree and go down recursively,
-  searching for the right place to insert our new node,
-  in the same way as explained in the search function.
-  Make sure to check for duplicates and omit if so.
-
-=end
+  def insert(value, node = @root)
+    if value == node.data
+      return nil
+    elsif value < node.data
+      insert(value, node.left)
+    elsif value > node.data
+      insert(value, node.right)
+    elsif node.nil?
+      node = Node.new(value)
+      node
+    end
   end
 
   def delete(value)
@@ -55,4 +57,5 @@ end
 end
 
 binary = Tree.new([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
-p binary.find(7)
+# binary.find(7)
+binary.insert(2)
