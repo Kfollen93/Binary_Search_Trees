@@ -35,6 +35,13 @@ class Tree
   end
 # ---------------------------------
 
+
+
+
+
+
+
+
   def delete(value, node = @root)
 =begin
   1. No subtree (no children): This one is the easiest one.
@@ -43,13 +50,13 @@ class Tree
   its child is then connected to the deleted node’s parent.
   3. Two subtrees (two children): You have to find and replace the node you want to delete,
   with its successor (the letfmost node in the right subtree).
-=end
+
     return nil if node.nil?
 
-    if value == node.data
-      if node.left.nil? && node.right.nil?
+    if value == node.data && node.left.nil? && node.right.nil?
+      #if node.left.nil? && node.right.nil?
       return nil # Is the same as doing node = nil
-      end
+      #end
     elsif value < node.data
       node.left = delete(value, node.left)
       return node
@@ -57,7 +64,42 @@ class Tree
       node.right = delete(value, node.right)
       return node
     end
+=end
+
+
+    if node == nil
+      return nil
+    elsif value < node.data
+      node.left = delete(value, node.left)
+      return node
+    elsif value > node.data
+      node.right = delete(value, node.right)
+      return node
+    else # node has been located to delete:
+      # case 1
+      if node.left.nil? && node.right.nil?
+        node = nil
+        return node
+      elsif #this will be case 2
+      end
+    end
+
+
+
+
   end
+
+
+
+
+
+
+
+
+
+
+
+
 
   # FIND METHOD
   def find(value, node = @root) 
@@ -76,7 +118,7 @@ end
 binary = Tree.new([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
 # binary.find(7)
 binary.insert(222)
-binary.delete(9)
+binary.delete(1)
 p binary.root
 
 
