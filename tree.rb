@@ -50,20 +50,6 @@ class Tree
   its child is then connected to the deleted node’s parent.
   3. Two subtrees (two children): You have to find and replace the node you want to delete,
   with its successor (the letfmost node in the right subtree).
-
-    return nil if node.nil?
-
-    if value == node.data && node.left.nil? && node.right.nil?
-      #if node.left.nil? && node.right.nil?
-      return nil # Is the same as doing node = nil
-      #end
-    elsif value < node.data
-      node.left = delete(value, node.left)
-      return node
-    else 
-      node.right = delete(value, node.right)
-      return node
-    end
 =end
 
 
@@ -76,17 +62,20 @@ class Tree
       node.right = delete(value, node.right)
       return node
     else # node has been located to delete:
-      # case 1
+      # Case 1: No children
       if node.left.nil? && node.right.nil?
         node = nil
-        return node
-      elsif #this will be case 2
+      elsif node.left.nil? # Case 2: One child
+        temp = node
+        node = node.right
+        temp = nil
+      elsif node.right.nil?
+        temp = node
+        node = node.left
+        temp = nil
       end
     end
-
-
-
-
+    return node
   end
 
 
@@ -118,7 +107,7 @@ end
 binary = Tree.new([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
 # binary.find(7)
 binary.insert(222)
-binary.delete(1)
+binary.delete(3)
 p binary.root
 
 
