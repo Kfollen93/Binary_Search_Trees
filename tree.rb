@@ -45,19 +45,18 @@ class Tree
   with its successor (the letfmost node in the right subtree).
 =end
     return nil if node.nil?
-    # if value == root set root to nil?
 
-    if value == node.data && node.left.nil? && node.right.nil?
-      node.data = nil # this should probably be node = nil, not node.data
+    if value == node.data
+      if node.left.nil? && node.right.nil?
+      return nil
+      end
     elsif value < node.data
-      delete(value, node.left)
-    elsif value > node.data
-      delete(value, node.right)
-    else
-      puts "Second part of delete goes here"
+      node.left = delete(value, node.left)
+      return node
+    else 
+      node.right = delete(value, node.right)
+      return node
     end
-
-
   end
 
   # FIND METHOD
@@ -76,7 +75,7 @@ end
 
 binary = Tree.new([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
 # binary.find(7)
-p binary.insert(222)
+binary.insert(222)
 binary.delete(9)
 p binary.root
 
