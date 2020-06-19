@@ -62,17 +62,16 @@ class Tree
       node.right = delete(value, node.right)
       return node
     else # node has been located to delete:
-      # Case 1: No children
-      if node.left.nil? && node.right.nil?
+      if node.left.nil? && node.right.nil? # Case 1: No children
         node = nil
       elsif node.left.nil? # Case 2: One child
-        temp = node
+        #temp = node
         node = node.right
-        temp = nil
+        #temp = nil
       elsif node.right.nil?
-        temp = node
+        #temp = node
         node = node.left
-        temp = nil
+        #temp = nil
       end
     end
     return node
