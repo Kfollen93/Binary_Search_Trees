@@ -48,7 +48,7 @@ class Tree
 
     if value == node.data
       if node.left.nil? && node.right.nil?
-      return nil
+      return nil # Is the same as doing node = nil
       end
     elsif value < node.data
       node.left = delete(value, node.left)
