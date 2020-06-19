@@ -19,6 +19,7 @@ class Tree
     node
   end
 
+  # INSERT METHOD
   def insert(value, node = @root)
     if value == node.data
       return nil
@@ -32,6 +33,7 @@ class Tree
       insert(value, node.right)
     end
   end
+# ---------------------------------
 
   def delete(value, node = @root)
 =begin
@@ -42,10 +44,8 @@ class Tree
   3. Two subtrees (two children): You have to find and replace the node you want to delete,
   with its successor (the letfmost node in the right subtree).
 =end
-
-# this method isn't entirely correct, I need to delete link that's to node, and that will
-# remove the following node. I dont think I need to delete the node itself.
     return nil if node.nil?
+    # if value == root set root to nil?
 
     if value == node.data && node.left.nil? && node.right.nil?
       node.data = nil # this should probably be node = nil, not node.data
@@ -60,6 +60,7 @@ class Tree
 
   end
 
+  # FIND METHOD
   def find(value, node = @root) 
     return nil if node.nil?
 
@@ -75,7 +76,7 @@ end
 
 binary = Tree.new([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
 # binary.find(7)
-binary.insert(222)
+p binary.insert(222)
 binary.delete(9)
 p binary.root
 
