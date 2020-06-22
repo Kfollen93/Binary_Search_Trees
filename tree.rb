@@ -65,13 +65,9 @@ class Tree
       if node.left.nil? && node.right.nil? # Case 1: No children
         node = nil
       elsif node.left.nil? # Case 2: One child
-        #temp = node
         node = node.right
-        #temp = nil
       elsif node.right.nil?
-        #temp = node
         node = node.left
-        #temp = nil
       end
     end
     return node
@@ -105,8 +101,8 @@ end
 
 binary = Tree.new([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
 # binary.find(7)
-binary.insert(222)
-binary.delete(3)
+# binary.insert(222)
+ binary.delete(3)
 p binary.root
 
 
