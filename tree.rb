@@ -44,16 +44,6 @@ class Tree
 
 
   def delete(value, node = @root)
-=begin
-  1. No subtree (no children): This one is the easiest one.
-  You can simply just delete the node, without any additional actions required.
-  2. One subtree (one child): You have to make sure that after the node is deleted,
-  its child is then connected to the deleted node’s parent.
-  3. Two subtrees (two children): You have to find and replace the node you want to delete,
-  with its successor (the letfmost node in the right subtree).
-=end
-
-
     if node == nil
       return nil
     elsif value < node.data
@@ -70,17 +60,17 @@ class Tree
       elsif node.right.nil?
         node = node.left
       elsif !node.left.nil? && !node.right.nil? # CASE 3: Two children
-        successor = node.right #over right one to 6345
-        succParent = node # still 67 
+        successor = node.right
+        successor_parent = node  
         if successor.left == nil #edge case check
           node.data = successor.data
           node.right = successor.right
         end
-        while successor.left != nil do # from 6345 to the left...
-          succParent = successor # 67 is equal to 6345
+        while successor.left != nil do 
+          successor_parent = successor
           successor = successor.left
           node.data = successor.data
-          succParent.left = successor.right
+          successor_parent.left = successor.right
         end
       end
     end
