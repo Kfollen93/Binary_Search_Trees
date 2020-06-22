@@ -72,6 +72,10 @@ class Tree
       elsif !node.left.nil? && !node.right.nil? # Case 3: Two children
         successor = node.right #over right one to 6345
         succParent = node # still 67 
+        if successor.left == nil #edge case check
+          node.data = successor.data
+          node.right = successor.right
+        end
         while successor.left != nil do # from 6345 to the left...
           succParent = successor # 67 is equal to 6345
           successor = successor.left
