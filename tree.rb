@@ -83,6 +83,18 @@ class Tree
       return node
     end
 end
+
+def level_order
+end
+
+
+
+
+
+
+
+
+
 end
 
 binary = Tree.new([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
