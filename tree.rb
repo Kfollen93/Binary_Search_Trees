@@ -63,13 +63,13 @@ class Tree
       node.right = delete(value, node.right)
       return node
     else # node has been located to delete:
-      if node.left.nil? && node.right.nil? # Case 1: No children
+      if node.left.nil? && node.right.nil? # CASE 1: No children
         node = nil
-      elsif node.left.nil? # Case 2: One child
+      elsif node.left.nil? # CASE 2: One child
         node = node.right
       elsif node.right.nil?
         node = node.left
-      elsif !node.left.nil? && !node.right.nil? # Case 3: Two children
+      elsif !node.left.nil? && !node.right.nil? # CASE 3: Two children
         successor = node.right #over right one to 6345
         succParent = node # still 67 
         if successor.left == nil #edge case check
