@@ -34,15 +34,8 @@ class Tree
       insert(value, node.right)
     end
   end
-# ---------------------------------
 
-
-
-
-
-
-
-
+  # DELETE METHOD
   def delete(value, node = @root)
     if node == nil
       return nil
@@ -61,12 +54,12 @@ class Tree
         node = node.left
       elsif !node.left.nil? && !node.right.nil? # CASE 3: Two children
         successor = node.right
-        successor_parent = node  
-        if successor.left == nil #edge case check
+        successor_parent = node
+        if successor.left == nil # edge case check
           node.data = successor.data
           node.right = successor.right
         end
-        while successor.left != nil do 
+        while successor.left != nil do
           successor_parent = successor
           successor = successor.left
           node.data = successor.data
@@ -74,23 +67,12 @@ class Tree
         end
       end
     end
+
     return node
   end
 
-
-
-
-
-
-
-
-
-
-
-
-
   # FIND METHOD
-  def find(value, node = @root) 
+  def find(value, node = @root)
     return nil if node.nil?
 
     if value < node.data
@@ -106,7 +88,5 @@ end
 binary = Tree.new([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
 # binary.find(7)
 # binary.insert(222)
- binary.delete(67)
+binary.delete(67)
 p binary.root
-
-
