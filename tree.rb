@@ -89,7 +89,7 @@ def level_order(node = @root)
   queue = [node]
   output = []
   
-  while(!queue.empty?)
+  while !queue.empty? do
     current = queue.shift
     if current.left
       queue.push(current.left)
