@@ -84,33 +84,25 @@ class Tree
     end
 end
 
- # LEVEL ORDER METHOD
-def level_order(node = @root)
-  queue = [node]
-  output = []
-  
-  while !queue.empty? do
-    current = queue.shift # current is 8. Shift removes and returns the number from queue array
-    output.push(current.data) #pushing the current number, 8, to output.
+  # LEVEL ORDER METHOD
+  def level_order(node = @root)
+    queue = [node]
+    output = []
 
-    if current.left # yes, 8 has a left
-      queue.push(current.left) # therefore, pushing 4 to queue.
+    while !queue.empty? do
+      current = queue.shift # current is 8. Shift removes and returns the number from queue array
+      binding.pry
+      output.push(current.data) # pushing the current number, 8, to output.
+
+      if current.left # yes, 8 has a left
+        queue.push(current.left) # therefore, pushing 4 to queue.
+      end
+      if current.right # current is 8, yes has a right
+        queue.push(current.right) # therefore, pushing 67 to queue
+      end
     end
-    if current.right # current is 8, yes has a right
-      queue.push(current.right) # therefore, pushing 67 to queue
-    end
+    puts output.join(" ") # printing output.
   end
-  puts output.join(" ") # printing output.
-end
-
-
-
-
-
-
-
-
-
 end
 
 binary = Tree.new([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
