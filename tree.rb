@@ -90,16 +90,17 @@ def level_order(node = @root)
   output = []
   
   while !queue.empty? do
-    current = queue.shift
-    if current.left
-      queue.push(current.left)
+    current = queue.shift # current is 8. Shift removes and returns the number from queue array
+    output.push(current.data) #pushing the current number, 8, to output.
+
+    if current.left # yes, 8 has a left
+      queue.push(current.left) # therefore, pushing 4 to queue.
     end
-    if current.right
-      queue.push(current.right)
+    if current.right # current is 8, yes has a right
+      queue.push(current.right) # therefore, pushing 67 to queue
     end
-     output.push(current.data)
   end
-  puts output.join(" ")
+  puts output.join(" ") # printing output.
 end
 
 
