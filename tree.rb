@@ -84,7 +84,22 @@ class Tree
     end
 end
 
-def level_order
+ # LEVEL ORDER METHOD
+def level_order(node = @root)
+  queue = [node]
+  output = []
+  
+  while(!queue.empty?)
+    current = queue.shift
+    if current.left
+      queue.push(current.left)
+    end
+    if current.right
+      queue.push(current.right)
+    end
+     output.push(current.data)
+  end
+  puts output.join(" ")
 end
 
 
@@ -100,5 +115,6 @@ end
 binary = Tree.new([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
 # binary.find(7)
 # binary.insert(222)
-binary.delete(67)
-p binary.root
+# binary.delete(67)
+# binary.root
+binary.level_order
