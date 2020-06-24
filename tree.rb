@@ -137,7 +137,7 @@ end
 
   
   def height(node = @root)
-    return -1 if node.nil?
+    return -1 if node.nil? # return -1 because the last edge will point to null. Don't want to count that edge.
     height(node.left) > height(node.right) ? height(node.left) + 1 : height(node.right) + 1
   end
 
