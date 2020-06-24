@@ -132,23 +132,16 @@ end
     post_order(node.left)
     post_order(node.right)
     print "#{node.data} "
-
   end
 
-  
+  # HEIGHT
   def height(node = @root)
     return -1 if node.nil? # return -1 because the last edge will point to null. Don't want to count that edge.
+
     height(node.left) > height(node.right) ? height(node.left) + 1 : height(node.right) + 1
   end
-
-
-
-
-
-
-
-
 end
+
 binary = Tree.new([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
 # binary.find(7)
 # binary.insert(222)
