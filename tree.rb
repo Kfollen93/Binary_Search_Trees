@@ -134,6 +134,11 @@ end
     print "#{node.data} "
 
   end
+
+  # Accepts a node and returns the depth(number of levels) beneath the node
+  def depth()
+  end
+
 end
 
 binary = Tree.new([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
