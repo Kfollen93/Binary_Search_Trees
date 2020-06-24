@@ -107,13 +107,10 @@ end
   # PRE ORDER
   def pre_order(node = @root)
     # <root> <left> <right>
+    return if node.nil?
     print "#{node.data} "
-    while !node.left.nil? do
-      node.left = pre_order(node.left)
-      while !node.right.nil? do
-        node.right = pre_order(node.right)
-      end
-    end
+    pre_order(node.left)
+    pre_order(node.right)
   end
 
   # IN ORDER
@@ -133,4 +130,5 @@ binary = Tree.new([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
 # binary.delete(67)
 # binary.root
 # binary.level_order
-binary.pre_order
+ binary.pre_order
+#binary.in_order
