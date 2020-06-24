@@ -135,12 +135,20 @@ end
 
   end
 
-  # Accepts a node and returns the depth(number of levels) beneath the node
-  def depth()
+  
+  def height(node = @root)
+    return -1 if node.nil?
+    depth(node.left) > depth(node.right) ? depth(node.left) + 1 : depth(node.right) + 1
   end
 
-end
 
+
+
+
+
+
+
+end
 binary = Tree.new([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
 # binary.find(7)
 # binary.insert(222)
@@ -149,4 +157,5 @@ binary = Tree.new([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
 # binary.level_order
 # binary.pre_order
 # binary.in_order
-binary.post_order
+# binary.post_order
+p binary.depth
