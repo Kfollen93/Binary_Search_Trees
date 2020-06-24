@@ -104,36 +104,27 @@ end
     puts output.join(" ") # printing output.
   end
 
+  # PRE ORDER
+  def pre_order(node = @root)
+    # <root> <left> <right>
+    print "#{node.data} "
+    while !node.left.nil? do
+      node.left = pre_order(node.left)
+      while !node.right.nil? do
+        node.right = pre_order(node.right)
+      end
+    end
+  end
 
-# PRE ORDER
-def pre_order(node = @root)
-# <root> <left> <right>
-print "#{node.data} "
-while !node.left.nil? do
-node.left = pre_order(node.left)
-while !node.right.nil? do
-  node.right = pre_order(node.right)
-end
-end
-end
+  # IN ORDER
+  def in_order
+    # <left> <root> <right>
+  end
 
-# IN ORDER
-def in_order
-# <left> <root> <right>
-end
-
-# POST ORDER
-def post_order
-# <left> <right> <root>
-end
-
-
-
-
-
-
-
-
+  # POST ORDER
+  def post_order
+    # <left> <right> <root>
+  end
 end
 
 binary = Tree.new([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
