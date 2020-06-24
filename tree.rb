@@ -138,7 +138,7 @@ end
   
   def height(node = @root)
     return -1 if node.nil?
-    depth(node.left) > depth(node.right) ? depth(node.left) + 1 : depth(node.right) + 1
+    height(node.left) > height(node.right) ? height(node.left) + 1 : height(node.right) + 1
   end
 
 
@@ -158,4 +158,4 @@ binary = Tree.new([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
 # binary.pre_order
 # binary.in_order
 # binary.post_order
-p binary.depth
+p binary.height
