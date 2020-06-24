@@ -125,8 +125,14 @@ end
   end
 
   # POST ORDER
-  def post_order
+  def post_order(node = @root)
     # <left> <right> <root>
+    return if node.nil?
+
+    post_order(node.left)
+    post_order(node.right)
+    print "#{node.data} "
+
   end
 end
 
@@ -137,4 +143,5 @@ binary = Tree.new([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
 # binary.root
 # binary.level_order
 # binary.pre_order
-binary.in_order
+# binary.in_order
+binary.post_order
