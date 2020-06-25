@@ -143,7 +143,7 @@ end
   # BALANCED?
   def balanced?(node = @root)
     return false unless (height(node.left) - height(node.right)).abs <= 1
-    
+
     if node.left
       return false unless balanced?(node.left)
     end
@@ -155,11 +155,8 @@ end
     true
   end
 
-
-
   def rebalance(node = @root)
   end
-
 end
 
 binary = Tree.new([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
