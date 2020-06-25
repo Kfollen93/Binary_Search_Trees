@@ -142,7 +142,17 @@ end
 
   # BALANCED?
   def balanced?(node = @root)
-    (height(node.left) - height(node.right)).abs <= 1 
+    return false unless (height(node.left) - height(node.right)).abs <= 1
+    
+    if node.left
+      return false unless balanced?(node.left)
+    end
+
+    if node.right
+      return false unless balanced?(node.right)
+    end
+
+    true
   end
 
 
