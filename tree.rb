@@ -142,7 +142,7 @@ end
 
   # BALANCED?
   def balanced?(node = @root)
-    (height(node.left) - height(node.right)).abs <= 1 ? true : false
+    (height(node.left) - height(node.right)).abs <= 1 
   end
 
 
