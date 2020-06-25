@@ -144,9 +144,9 @@ end
   def balanced?(node = @root)
     return -1 if node.nil?
    
-    if (height(node.left) + 1) - (height(node.right) + 1) == 1 || (height(node.right) + 1) - (height(node.left) + 1) == 1 || (height(node.left) + 1) - (height(node.right) + 1) == 0 || (height(node.right) + 1) - (height(node.left) + 1) == 0
+    if ((height(node.left) + 1) - (height(node.right) + 1)).abs <= 1
       true
-    elsif (height(node.left) + 1) - (height(node.right) + 1) > 1 || (height(node.right) + 1) - (height(node.left) + 1) > 1
+    else
       false
     end
   end
@@ -167,5 +167,5 @@ binary = Tree.new([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
 # binary.pre_order
 # binary.in_order
 # binary.post_order
-p  binary.height
+# binary.height
 p binary.balanced?
