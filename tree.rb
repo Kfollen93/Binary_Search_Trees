@@ -91,7 +91,6 @@ end
 
     while !queue.empty? do
       current = queue.shift # current is 8. Shift removes and returns the number from queue array
-      binding.pry
       output.push(current.data) # pushing the current number, 8, to output.
 
       if current.left # yes, 8 has a left
@@ -144,13 +143,15 @@ end
   # BALANCED?
   def balanced?(node = @root)
     return -1 if node.nil?
-
-    if (height(node.left) + 1) - (height(node.right) + 1) <= 1 || (height(node.right) + 1) - (height(node.left) + 1) <= 1
+   
+    if (height(node.left) + 1) - (height(node.right) + 1) == 1 || (height(node.right) + 1) - (height(node.left) + 1) == 1 || (height(node.left) + 1) - (height(node.right) + 1) == 0 || (height(node.right) + 1) - (height(node.left) + 1) == 0
       true
     elsif (height(node.left) + 1) - (height(node.right) + 1) > 1 || (height(node.right) + 1) - (height(node.left) + 1) > 1
       false
     end
   end
+
+
 
   def rebalance(node = @root)
   end
@@ -166,5 +167,5 @@ binary = Tree.new([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
 # binary.pre_order
 # binary.in_order
 # binary.post_order
-# binary.height
+p  binary.height
 p binary.balanced?
