@@ -145,11 +145,12 @@ end
   def balanced?(node = @root)
     return -1 if node.nil?
 
-    height(node.left) + 1
-    height(node.right) + 1
+    if (height(node.left) + 1) - (height(node.right) + 1) <= 1 || (height(node.right) + 1) - (height(node.left) + 1) <= 1
+      true
+    elsif (height(node.left) + 1) - (height(node.right) + 1) > 1 || (height(node.right) + 1) - (height(node.left) + 1) > 1
+      false
+    end
 
-    # if left and right are = to each other or one is greater by 1 then return true
-    # else if they are not equal and one is greater by at least 2, then return false.
   end
 
 
