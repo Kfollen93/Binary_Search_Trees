@@ -1,5 +1,7 @@
-require_relative 'node.rb'
+# frozen_string_literal: true
 
+require_relative 'node.rb'
+# Create a tree and manages node within.
 class Tree
   attr_accessor :root
 
@@ -19,11 +21,10 @@ class Tree
     node
   end
 
-  # INSERT METHOD
   def insert(value, node = @root)
-    if value == node.data
-      return nil
-    elsif node.right.nil? && value > node.data
+    return nil if value == node.data
+
+    if node.right.nil? && value > node.data
       node.right = Node.new(value)
     elsif node.left.nil? && value < node.data
       node.left = Node.new(value)
@@ -34,7 +35,6 @@ class Tree
     end
   end
 
-  # DELETE METHOD
   def delete(value, node = @root)
     return nil if node.nil?
 
@@ -53,12 +53,11 @@ class Tree
         node = node.left
       elsif !node.left.nil? && !node.right.nil? # CASE 3: Two children
         successor = node.right
-        successor_parent = node
-        if successor.left == nil # edge case check
+        if successor.left.nil? # edge case check
           node.data = successor.data
           node.right = successor.right
         end
-        while successor.left != nil do
+        until successor.left.nil?
           successor_parent = successor
           successor = successor.left
           node.data = successor.data
@@ -67,10 +66,9 @@ class Tree
       end
     end
 
-    return node
+    node
   end
 
-  # FIND METHOD
   def find(value, node = @root)
     return nil if node.nil?
 
@@ -79,30 +77,20 @@ class Tree
     elsif value > node.data
       find(value, node.right)
     else
-      return node
+      node
     end
-end
+  end
 
-  # LEVEL ORDER METHOD
-  def level_order(node = @root)
-    queue = [node]
-    output = []
-
-    while !queue.empty? do
-      current = queue.shift # current is 8. Shift removes and returns the number from queue array
+  def level_order(node = @root, queue = [node], output = [])
+    until queue.empty?
+      current = queue.shift # 8. Shift removes & returns the num from queue.
       output.push(current.data) # pushing the current number, 8, to output.
-
-      if current.left # yes, 8 has a left
-        queue.push(current.left) # therefore, pushing 4 to queue.
-      end
-      if current.right # current is 8, yes has a right
-        queue.push(current.right) # therefore, pushing 67 to queue
-      end
+      current.left ? queue.push(current.left) : nil # 8 has a left, push 4.
+      current.right ? queue.push(current.right) : nil # 8 has a right, push 67.
     end
     output # array which is being used by the rebalance method
   end
 
-  # PRE ORDER
   def pre_order(node = @root)
     # <root> <left> <right>
     return if node.nil?
@@ -112,7 +100,6 @@ end
     pre_order(node.right)
   end
 
-  # IN ORDER
   def in_order(node = @root)
     # <left> <root> <right>
     return if node.nil?
@@ -122,7 +109,6 @@ end
     in_order(node.right)
   end
 
-  # POST ORDER
   def post_order(node = @root)
     # <left> <right> <root>
     return if node.nil?
@@ -132,14 +118,12 @@ end
     print "#{node.data} "
   end
 
-  # HEIGHT
   def height(node = @root)
-    return -1 if node.nil? # return -1 because the last edge will point to nil. Don't want to count that edge.
+    return -1 if node.nil? # return -1 because last edge points to nil.
 
     height(node.left) > height(node.right) ? height(node.left) + 1 : height(node.right) + 1
   end
 
-  # BALANCED?
   def balanced?(node = @root)
     return false unless (height(node.left) - height(node.right)).abs <= 1
 
@@ -153,12 +137,12 @@ end
   end
 
   def rebalance
-    array = level_order(node = @root)
+    array = level_order(@root)
     @root = build_tree(array)
   end
 end
 
-p binary = Tree.new([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
+# binary = Tree.new([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
 # binary.find(7)
 # binary.insert(222)
 # binary.delete(67)
@@ -172,10 +156,6 @@ p binary = Tree.new([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
 # binary.rebalance
 # binary.balanced?
 
-
-
-
-=begin
 # Driver Script
 binary = Tree.new(Array.new(15) { rand(1..100) })
 p binary.balanced?
@@ -210,4 +190,3 @@ binary.post_order
 puts " "
 binary.in_order
 puts " "
-=end
