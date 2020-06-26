@@ -36,9 +36,9 @@ class Tree
 
   # DELETE METHOD
   def delete(value, node = @root)
-    if node == nil
-      return nil
-    elsif value < node.data
+    return nil if node.nil?
+
+    if value < node.data
       node.left = delete(value, node.left)
       return node
     elsif value > node.data
@@ -99,7 +99,6 @@ end
         queue.push(current.right) # therefore, pushing 67 to queue
       end
     end
-    # puts output.join(" ") string
     output # array which is being used by the rebalance method
   end
 
@@ -159,9 +158,9 @@ end
   end
 end
 
-binary = Tree.new([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
+p binary = Tree.new([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
 # binary.find(7)
- binary.insert(222)
+# binary.insert(222)
 # binary.delete(67)
 # binary.root
 # binary.level_order
@@ -180,19 +179,35 @@ binary = Tree.new([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
 # Driver Script
 binary = Tree.new(Array.new(15) { rand(1..100) })
 p binary.balanced?
-#binary.level_order
-#binary.pre_order
-#binary.post_order
-#binary.in_order
+puts " "
+p binary.level_order
+puts " "
+binary.pre_order
+puts " "
+binary.post_order
+puts " "
+binary.in_order
+puts " "
 binary.insert(120)
+puts " "
 binary.insert(140)
+puts " "
 binary.insert(620)
+puts " "
 binary.insert(350)
+puts " "
 p binary.balanced?
+puts " "
 binary.rebalance
+puts " "
 p binary.balanced?
-#binary.level_order
-#binary.pre_order
-#binary.post_order
-#binary.in_order
+puts " "
+p binary.level_order
+puts " "
+binary.pre_order
+puts " "
+binary.post_order
+puts " "
+binary.in_order
+puts " "
 =end
