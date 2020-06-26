@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'node.rb'
-# Create a tree and manages node within.
+# Creates a tree and organization of nodes.
 class Tree
   attr_accessor :root
 
