@@ -99,8 +99,8 @@ end
         queue.push(current.right) # therefore, pushing 67 to queue
       end
     end
-    # puts output.join(" ") # printing output.
-    output
+    # puts output.join(" ") string
+    output # array which is being used by the rebalance method
   end
 
   # PRE ORDER
@@ -155,13 +155,13 @@ end
 
   def rebalance
     array = level_order(node = @root)
-    build_tree(array)
+  p  build_tree(array)
   end
 end
 
-binary = Tree.new([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
+#binary = Tree.new([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
 # binary.find(7)
-binary.insert(222)
+# binary.insert(222)
 # binary.delete(67)
 # binary.root
 # binary.level_order
@@ -170,5 +170,31 @@ binary.insert(222)
 # binary.post_order
 # binary.height
 # binary.balanced?
+# binary.rebalance
+# binary.balanced?
+
+
+
+=begin
+# Driver Script
+binary = Tree.new(Array.new(15) { rand(1..100) })
+p binary.balanced?
+#binary.level_order
+#binary.pre_order
+#binary.post_order
+#binary.in_order
+binary.insert(120)
+binary.insert(140)
+binary.insert(620)
+binary.insert(350)
+p binary.balanced?
 binary.rebalance
-binary.balanced?
+p binary.balanced?
+#binary.level_order
+#binary.pre_order
+#binary.post_order
+#binary.in_order
+=end
+
+
+
