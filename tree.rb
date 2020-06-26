@@ -1,4 +1,3 @@
-require 'pry'
 require_relative 'node.rb'
 
 class Tree
@@ -100,7 +99,8 @@ end
         queue.push(current.right) # therefore, pushing 67 to queue
       end
     end
-    puts output.join(" ") # printing output.
+    # puts output.join(" ") # printing output.
+    output
   end
 
   # PRE ORDER
@@ -143,6 +143,7 @@ end
   # BALANCED?
   def balanced?(node = @root)
     return false unless (height(node.left) - height(node.right)).abs <= 1
+
     if node.left
       return false unless balanced?(node.left)
     end
@@ -152,18 +153,22 @@ end
     true
   end
 
-  def rebalance(node = @root)
+  def rebalance
+    array = level_order(node = @root)
+    build_tree(array)
   end
 end
 
 binary = Tree.new([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
 # binary.find(7)
-# binary.insert(222)
+binary.insert(222)
 # binary.delete(67)
 # binary.root
 # binary.level_order
 # binary.pre_order
 # binary.in_order
 # binary.post_order
-p binary.height
-p binary.balanced?
+# binary.height
+# binary.balanced?
+binary.rebalance
+binary.balanced?
