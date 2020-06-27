@@ -27,12 +27,21 @@ class Tree
   def insert(value, node = @root)
     return nil if value == node.data
 
-    if node.right.nil? && value > node.data
-      node.right = Node.new(value)
-    elsif node.left.nil? && value < node.data
+    insert_left(value, node)
+    insert_right(value, node)
+  end
+
+  def insert_left(value, node)
+    if node.left.nil? && value < node.data
       node.left = Node.new(value)
     elsif value < node.data
       insert(value, node.left)
+    end
+  end
+
+  def insert_right(value, node)
+    if node.right.nil? && value > node.data
+      node.right = Node.new(value)
     elsif value > node.data
       insert(value, node.right)
     end
