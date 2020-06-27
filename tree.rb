@@ -141,30 +141,3 @@ class Tree
     @root = build_tree(array)
   end
 end
-
-# Driver Script
-binary = Tree.new(Array.new(15) { rand(1..100) })
-p binary.balanced?
-p binary.level_order
-puts ''
-binary.pre_order
-puts ''
-binary.post_order
-puts ''
-binary.in_order
-puts ''
-binary.insert(120)
-binary.insert(140)
-binary.insert(620)
-binary.insert(350)
-p binary.balanced?
-binary.rebalance
-p binary.balanced?
-p binary.level_order
-puts ''
-binary.pre_order
-puts ''
-binary.post_order
-puts ''
-binary.in_order
-puts ''
