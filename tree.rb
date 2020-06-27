@@ -159,34 +159,27 @@ end
 # Driver Script
 binary = Tree.new(Array.new(15) { rand(1..100) })
 p binary.balanced?
-puts " "
 p binary.level_order
-puts " "
+puts ''
 binary.pre_order
-puts " "
+puts ''
 binary.post_order
-puts " "
+puts ''
 binary.in_order
-puts " "
+puts ''
 binary.insert(120)
-puts " "
 binary.insert(140)
-puts " "
 binary.insert(620)
-puts " "
 binary.insert(350)
-puts " "
 p binary.balanced?
-puts " "
 binary.rebalance
-puts " "
 p binary.balanced?
-puts " "
 p binary.level_order
-puts " "
+puts ''
 binary.pre_order
-puts " "
+puts ''
 binary.post_order
-puts " "
+puts ''
 binary.in_order
-puts " "
+puts ''
+
