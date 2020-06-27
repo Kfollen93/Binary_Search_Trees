@@ -142,20 +142,6 @@ class Tree
   end
 end
 
-# binary = Tree.new([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
-# binary.find(7)
-# binary.insert(222)
-# binary.delete(67)
-# binary.root
-# binary.level_order
-# binary.pre_order
-# binary.in_order
-# binary.post_order
-# binary.height
-# binary.balanced?
-# binary.rebalance
-# binary.balanced?
-
 # Driver Script
 binary = Tree.new(Array.new(15) { rand(1..100) })
 p binary.balanced?
@@ -182,4 +168,3 @@ binary.post_order
 puts ''
 binary.in_order
 puts ''
-
