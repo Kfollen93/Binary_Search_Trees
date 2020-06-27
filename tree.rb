@@ -13,6 +13,10 @@ class Tree
     return nil if data_sorted.empty?
     return Node.new(data_sorted.first) if data_sorted.length < 2
 
+    create_nodes(data_sorted)
+  end
+
+  def create_nodes(data_sorted)
     mid = data_sorted.length / 2
     node = Node.new(data_sorted[mid])
     node.left = build_tree(data_sorted.take(mid))
