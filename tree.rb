@@ -64,7 +64,15 @@ class Tree
       elsif node.right.nil?
         node = node.left
       elsif !node.left.nil? && !node.right.nil? # CASE 3: Two children
-        successor = node.right
+        replace_two_children_node(node)
+      end
+    end
+
+    node
+  end
+
+  def replace_two_children_node(node)
+    successor = node.right
         if successor.left.nil? # edge case check
           node.data = successor.data
           node.right = successor.right
@@ -76,10 +84,6 @@ class Tree
           successor_parent.left = successor.right
         end
       end
-    end
-
-    node
-  end
 
   def find(value, node = @root)
     return nil if node.nil?
