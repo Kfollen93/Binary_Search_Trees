@@ -28,3 +28,4 @@ binary.post_order
 puts ''
 binary.in_order
 puts ''
+p binary.height

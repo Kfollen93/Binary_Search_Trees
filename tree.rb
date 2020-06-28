@@ -133,7 +133,11 @@ class Tree
   def height(node = @root)
     return -1 if node.nil? # return -1 because last edge points to nil.
 
-    height(node.left) > height(node.right) ? height(node.left) + 1 : height(node.right) + 1
+    if height(node.left) > height(node.right)
+      height(node.left) + 1
+    else
+      height(node.right) + 1
+    end
   end
 
   def balanced?(node = @root)
