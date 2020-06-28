@@ -62,9 +62,9 @@ class Tree
       node = node.right
     elsif node.right.nil?
       node = node.left
-    elsif !node.left.nil? && !node.right.nil? # CASE 3: Two children
+    else # CASE 3: Two children
       delete_two_children_node(node)
-      end
+    end
     node
   end
 
