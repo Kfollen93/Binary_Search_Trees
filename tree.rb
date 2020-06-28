@@ -57,13 +57,13 @@ class Tree
       node.right = delete(value, node.right)
       return node
     elsif node.left.nil? && node.right.nil? # CASE 1: No children
-        node = nil
+      node = nil
     elsif node.left.nil? # CASE 2: One child
-        node = node.right
+      node = node.right
     elsif node.right.nil?
-        node = node.left
+      node = node.left
     elsif !node.left.nil? && !node.right.nil? # CASE 3: Two children
-        delete_two_children_node(node)
+      delete_two_children_node(node)
       end
     node
   end
