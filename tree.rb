@@ -71,7 +71,7 @@ class Tree
     node
   end
 
-  def replace_two_children_node(node)
+  def delete_two_children_node(node)
     successor = node.right
         if successor.left.nil? # edge case check
           node.data = successor.data
