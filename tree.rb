@@ -56,18 +56,15 @@ class Tree
     elsif value > node.data
       node.right = delete(value, node.right)
       return node
-    else # node has been located to delete:
-      if node.left.nil? && node.right.nil? # CASE 1: No children
+    elsif node.left.nil? && node.right.nil? # CASE 1: No children
         node = nil
-      elsif node.left.nil? # CASE 2: One child
+    elsif node.left.nil? # CASE 2: One child
         node = node.right
-      elsif node.right.nil?
+    elsif node.right.nil?
         node = node.left
-      elsif !node.left.nil? && !node.right.nil? # CASE 3: Two children
-        replace_two_children_node(node)
+    elsif !node.left.nil? && !node.right.nil? # CASE 3: Two children
+        delete_two_children_node(node)
       end
-    end
-
     node
   end
 
@@ -83,7 +80,7 @@ class Tree
       node.data = successor.data
       successor_parent.left = successor.right
     end
-      end
+  end
 
   def find(value, node = @root)
     return nil if node.nil?
