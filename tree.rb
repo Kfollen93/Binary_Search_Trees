@@ -73,16 +73,16 @@ class Tree
 
   def delete_two_children_node(node)
     successor = node.right
-        if successor.left.nil? # edge case check
-          node.data = successor.data
-          node.right = successor.right
-        end
-        until successor.left.nil?
-          successor_parent = successor
-          successor = successor.left
-          node.data = successor.data
-          successor_parent.left = successor.right
-        end
+    if successor.left.nil? # edge case check
+      node.data = successor.data
+      node.right = successor.right
+    end
+    until successor.left.nil?
+      successor_parent = successor
+      successor = successor.left
+      node.data = successor.data
+      successor_parent.left = successor.right
+    end
       end
 
   def find(value, node = @root)
