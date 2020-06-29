@@ -52,10 +52,10 @@ class Tree
 
     if value < node.data
       node.left = delete(value, node.left)
-      return node
+    #  return node
     elsif value > node.data
       node.right = delete(value, node.right)
-      return node
+    #  return node
     elsif node.left.nil? && node.right.nil? # CASE 1: No children
       node = nil
     elsif node.left.nil? # CASE 2: One child

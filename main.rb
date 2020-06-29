@@ -29,5 +29,5 @@ puts ''
 binary.in_order
 puts ''
 p binary.height
-binary.delete(120)
+binary.delete(140)
 p binary.level_order
